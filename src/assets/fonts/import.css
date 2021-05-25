@@ -1,0 +1,11 @@
+@font-face {
+	font-family: 'title';
+	src: url('Title.ttf');
+	font-weight:400;
+	font-weight:normal;
+}
+
+@font-face {
+	font-family: 'fira-code-retina';
+	src: url('FiraCode-Retina.ttf');
+}
