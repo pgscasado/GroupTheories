@@ -1,0 +1,19 @@
+@font-face {
+	font-family: 'Title';
+	src: url('../assets/fonts/Title.ttf');
+}
+
+@font-face {
+	font-family: 'FiraCodeRetina';
+	src: url('../assets/fonts/FiraCode-Retina.ttf');
+}
+
+@font-face {
+	font-family: 'Menu';
+	src: url('../assets/fonts/Menu.otf');
+}
+
+@font-face {
+	font-family: 'RobotoThin';
+	src: url('../assets/fonts/Roboto-Thin.ttf');
+}

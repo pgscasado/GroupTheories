@@ -1,7 +1,7 @@
 import {AUTO, Game} from 'phaser'
 import { MainMenu } from './main.scene'
 require('file-loader?name=[name].[ext]!../index.html');
-require('./assets/fonts/import.css')
+require('./css/fonts.css')
 
 export type TGameSettings = {
 	width: number,

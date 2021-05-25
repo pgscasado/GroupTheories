@@ -1,3 +1,4 @@
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -34,7 +35,20 @@ module.exports = {
                         outputPath: 'fonts/'
                     }
                 }]
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)$/i,
+                type: 'asset'
             }
         ]
-    }
+    },
+    plugins: [
+        new ImageMinimizerPlugin({
+            minimizerOptions: {
+                plugins: [
+                    ['optipng', { optimizationLevel: 5 }]
+                ]
+            }
+        })
+    ]
 }
