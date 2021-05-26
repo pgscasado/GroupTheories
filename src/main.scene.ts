@@ -1,24 +1,25 @@
 import { Scene } from 'phaser'
-import { TGameSettings } from './app'
+import { gameSettings } from './app'
 import background from './assets/images/background.png'
 import menuButtonBg from './assets/images/menuButtonMini.png'
 
 type Pair<T, K> = [T, K]
 
 export class MainMenu extends Scene {
+	height: number
 	interactives: Pair<Phaser.GameObjects.Image, boolean>[]
-	settings: TGameSettings
+	width: number
 
-	constructor(settings: TGameSettings) {
+	constructor() {
 		super({key: 'MainMenu'})
-		this.settings = settings
 		this.interactives = []
+		this.width = gameSettings.width
+		this.height = gameSettings.height
 	}
 
 	protected create() {
-		const {width, height} = this.sys.game.scale.gameSize
 		// background render
-		this.add.image(width / 2, height / 2, 'background')
+		this.add.image(this.width / 2, this.height / 2, 'background')
 		// title text render
 		const titleText = this.add.text(0, 0, 'Group\nTheories', {
 			fontFamily: 'Title',
@@ -26,33 +27,33 @@ export class MainMenu extends Scene {
 			color: '#9911ee',
 			align: 'center',
 		})
-		Phaser.Display.Align.In.Center(titleText, this.add.zone(width * 0.5, height * 0.3, width, height))
+		Phaser.Display.Align.In.Center(titleText, this.add.zone(this.width * 0.5, this.height * 0.3, this.width, this.height))
 
 		// button render
-		const startButton = this.add.image(width / 2, height * 0.6, 'menuButtonBg')
+		const startButton = this.add.image(this.width / 2, this.height * 0.6, 'menuButtonBg')
 		startButton.setTint(0xffffff, 0xffffff, 0xffffff, 0xffffff)
 		const buttonText = this.add.text(0, 0, 'Jogar!', {
 			fontFamily: 'RobotoThin',
 			fontSize: '48px',
 			color: 'black',
 		})
-		Phaser.Display.Align.In.Center(buttonText, this.add.zone(width * 0.5, height * 0.6 - 8, width, height))
+		Phaser.Display.Align.In.Center(buttonText, this.add.zone(this.width * 0.5, this.height * 0.6 - 8, this.width, this.height))
 
 		startButton.setInteractive()
-		this.interactives.push([startButton, false])
+		// this.interactives.push([startButton, false])
 		startButton.on('pointerover', () => {
-			const btn = this.interactives.find((elm) => elm[0] === startButton)
+			const btn = startButton
 			if (btn) {
 				startButton.setTint(0xcccccc, 0xcccccc, 0xcccccc, 0xcccccc)
-				btn[1] = true
+				// btn[1] = true
 			}
 		})
 
 		startButton.on('pointerout', () => {
-			const btn = this.interactives.find((elm) => elm[0] === startButton)
+			const btn = startButton
 			if (btn) {
 				startButton.setTint(0xffffff, 0xffffff, 0xffffff, 0xffffff)
-				btn[1] = false
+				// btn[1] = false
 			}
 		})
 
